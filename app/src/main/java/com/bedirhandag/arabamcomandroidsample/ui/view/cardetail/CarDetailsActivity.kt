@@ -1,4 +1,4 @@
-package com.bedirhandag.arabamcomandroidsample
+package com.bedirhandag.arabamcomandroidsample.ui.view.cardetail
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

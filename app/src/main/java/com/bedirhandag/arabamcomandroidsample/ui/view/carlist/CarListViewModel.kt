@@ -1,4 +1,4 @@
-package com.bedirhandag.arabamcomandroidsample
+package com.bedirhandag.arabamcomandroidsample.ui.view.carlist
 
 import androidx.lifecycle.ViewModel
 

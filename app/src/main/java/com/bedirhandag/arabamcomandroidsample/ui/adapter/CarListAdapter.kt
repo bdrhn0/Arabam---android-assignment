@@ -1,9 +1,10 @@
-package com.bedirhandag.arabamcomandroidsample
+package com.bedirhandag.arabamcomandroidsample.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bedirhandag.arabamcomandroidsample.databinding.RecyclerRowBinding
+import com.bedirhandag.arabamcomandroidsample.util.ItemClickListener
 
 class CarListAdapter(val testStringListe : ArrayList<String>,private val itemClickListener: ItemClickListener) : RecyclerView.Adapter<CarListAdapter.CarListVH>() {
 

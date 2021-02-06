@@ -1,10 +1,13 @@
-package com.bedirhandag.arabamcomandroidsample
+package com.bedirhandag.arabamcomandroidsample.ui.view.carlist
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import com.bedirhandag.arabamcomandroidsample.databinding.ActivityCarListBinding
+import com.bedirhandag.arabamcomandroidsample.ui.adapter.CarListAdapter
+import com.bedirhandag.arabamcomandroidsample.ui.view.cardetail.CarDetailsActivity
+import com.bedirhandag.arabamcomandroidsample.util.ItemClickListener
 import kotlinx.android.synthetic.main.activity_car_list.*
 
 class CarListActivity : AppCompatActivity() {

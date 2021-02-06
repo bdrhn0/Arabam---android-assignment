@@ -15,10 +15,10 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".CarDetailsActivity"
+            android:name=".ui.view.cardetail.CarDetailsActivity"
             android:label="@string/title_activity_car_details">
         </activity>
-        <activity android:name=".CarListActivity">
+        <activity android:name=".ui.view.carlist.CarListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

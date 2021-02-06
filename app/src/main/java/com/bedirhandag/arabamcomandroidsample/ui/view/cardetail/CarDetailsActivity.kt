@@ -18,7 +18,7 @@ class CarDetailsActivity : AppCompatActivity() {
     }
 
     private fun getArgs() {
-        intent?.getStringExtra("data")?.let {
+        intent?.getStringExtra("id")?.let {
             viewbinding.textView.text = it
         }
     }

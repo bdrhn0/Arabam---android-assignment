@@ -8,4 +8,8 @@
     <string name="hello_world">Hello Square World!</string>
     <string name="title_activity_cars_details">CarsDetailsActivity</string>
     <string name="title_activity_car_details">CarDetailsActivity</string>
+
+    <string name="placeholder_brand">Marka: %s</string>
+    <string name="placeholder_model">Model: %s</string>
+    <string name="placeholder_year">Yıl: %s</string>
 </resources>

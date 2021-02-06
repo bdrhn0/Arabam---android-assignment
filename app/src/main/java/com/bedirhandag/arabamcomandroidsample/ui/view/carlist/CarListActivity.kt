@@ -69,7 +69,7 @@ class CarListActivity : AppCompatActivity() {
     }
 
     fun carListRequest() {
-        apiService = ApiClient.getClient().create(apiService::class.java)
+        apiService = ApiClient.getClient().create(ApiService::class.java)
         val carRequest = apiService.getCarList(1, 0, 10)
 
         carRequest.enqueue(object : Callback<CarListResponseModel> {

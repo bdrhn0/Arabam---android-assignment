@@ -35,6 +35,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
 
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_lifecycle_extensions_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_lifecycle_viewmodel_ktx_version"
@@ -47,7 +48,6 @@ dependencies {
 
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutine_core_version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine_android_version"
-    implementation 'androidx.recyclerview:recyclerview:1.1.0'
 
     implementation "com.github.bumptech.glide:glide:$glide_version"
     annotationProcessor "com.github.bumptech.glide:compiler:$glide_version"

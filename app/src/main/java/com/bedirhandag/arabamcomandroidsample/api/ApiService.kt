@@ -1,5 +1,6 @@
 package com.bedirhandag.arabamcomandroidsample.api
 
+import com.bedirhandag.arabamcomandroidsample.model.cardetail.CarDetailResponseModel
 import com.bedirhandag.arabamcomandroidsample.model.carlist.CarListResponseModel
 import retrofit2.Call
 import retrofit2.http.GET
@@ -13,6 +14,11 @@ interface ApiService {
         @Query("sortDirection") sortDirection: Int,
         @Query("take") take: Int
     ): Call<CarListResponseModel>
+
+    @GET("detail")
+    fun getDetails(
+        @Query("id") id: Int
+    ): Call<CarDetailResponseModel>
 
 
 }

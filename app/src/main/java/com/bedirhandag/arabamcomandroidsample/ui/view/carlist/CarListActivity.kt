@@ -5,12 +5,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bedirhandag.arabamcomandroidsample.api.ApiClient
 import com.bedirhandag.arabamcomandroidsample.api.ApiService
 import com.bedirhandag.arabamcomandroidsample.databinding.ActivityCarListBinding
 import com.bedirhandag.arabamcomandroidsample.model.carlist.CarListResponseModel
 import com.bedirhandag.arabamcomandroidsample.ui.adapter.CarListAdapter
 import com.bedirhandag.arabamcomandroidsample.ui.view.cardetail.CarDetailsActivity
+import com.bedirhandag.arabamcomandroidsample.util.EndlessScrollListener
 import com.bedirhandag.arabamcomandroidsample.util.ItemClickListener
 import retrofit2.Call
 import retrofit2.Callback
@@ -21,6 +23,7 @@ class CarListActivity : AppCompatActivity() {
 
     private lateinit var viewbinding: ActivityCarListBinding
     private lateinit var viewModel: CarListViewModel
+    lateinit var carListAdapter: CarListAdapter
     lateinit var apiService: ApiService
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,26 +31,37 @@ class CarListActivity : AppCompatActivity() {
         setupViewModel()
         setupViewBinding()
         initObservers()
-        carListRequest()
+        initAdapter()
+        carListRequest(FIRST_PAGE)
     }
 
     private fun initObservers() {
         viewModel.apply {
             carListLiveData.observe(this@CarListActivity, {
-                initAdapter(it)
+                carListAdapter.setCarList(it)
             })
         }
     }
 
-    private fun initAdapter(carListResponseModel: CarListResponseModel) {
-        CarListAdapter(carListResponseModel, object : ItemClickListener {
+    private fun initAdapter() {
+        CarListAdapter(object : ItemClickListener {
             override fun onItemClick(id: Int?) {
                 id?.let {
                     navigateToCarDetails(id)
                 }
             }
         }).also { _adapter ->
-            viewbinding.recyclerView.adapter = _adapter
+            carListAdapter = _adapter
+            viewbinding.recyclerView.apply {
+                adapter = carListAdapter
+                addOnScrollListener(object :
+                    EndlessScrollListener(layoutManager as LinearLayoutManager) {
+                    override fun onLoadMore(page: Int) {
+                        carListRequest(page)
+                    }
+                })
+            }
+
         }
     }
 
@@ -68,9 +82,9 @@ class CarListActivity : AppCompatActivity() {
         }
     }
 
-    fun carListRequest() {
+    fun carListRequest(page: Int) {
         apiService = ApiClient.getClient().create(ApiService::class.java)
-        val carRequest = apiService.getCarList(1, 0, 10)
+        val carRequest = apiService.getCarList(page, 0, 10)
 
         carRequest.enqueue(object : Callback<CarListResponseModel> {
             override fun onResponse(
@@ -87,5 +101,9 @@ class CarListActivity : AppCompatActivity() {
             }
 
         })
+    }
+
+    companion object {
+        const val FIRST_PAGE = 1
     }
 }

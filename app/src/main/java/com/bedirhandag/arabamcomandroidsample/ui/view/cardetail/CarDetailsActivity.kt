@@ -5,10 +5,12 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import com.bedirhandag.arabamcomandroidsample.R
 import com.bedirhandag.arabamcomandroidsample.api.ApiClient
 import com.bedirhandag.arabamcomandroidsample.api.ApiService
 import com.bedirhandag.arabamcomandroidsample.databinding.ActivityCarDetailsBinding
 import com.bedirhandag.arabamcomandroidsample.model.cardetail.CarDetailResponseModel
+import com.bumptech.glide.Glide
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -28,7 +30,6 @@ class CarDetailsActivity : AppCompatActivity() {
 
     private fun getArgs() {
         intent?.getIntExtra("id", 0)?.let {
-            viewbinding.textView.text = it.toString()
             viewModel.carIdLiveData.value = it
         }
     }
@@ -52,7 +53,7 @@ class CarDetailsActivity : AppCompatActivity() {
                 response: Response<CarDetailResponseModel>
             ) {
                 response.body()?.let {
-                    Toast.makeText(this@CarDetailsActivity, it.modelName, Toast.LENGTH_LONG).show()
+                    viewModel.carDetailModelLiveData.value = it
                 }
             }
 
@@ -68,6 +69,25 @@ class CarDetailsActivity : AppCompatActivity() {
             carIdLiveData.observe(this@CarDetailsActivity, {
                 carDetailsRequest(it)
             })
+            carDetailModelLiveData.observe(this@CarDetailsActivity, {
+                initUi()
+            })
+        }
+    }
+
+    private fun initUi() {
+        viewbinding.apply {
+            modelName.text = viewModel.carDetailModelLiveData.value?.modelName
+            formattedPrice.text = viewModel.carDetailModelLiveData.value?.priceFormatted
+            year.text = viewModel.carDetailModelLiveData.value?.dateFormatted
+            location.text = viewModel.carDetailModelLiveData.value?.location?.cityName
+            userInfo.text = viewModel.carDetailModelLiveData.value?.userInfo?.nameSurname
+            val formattedPhoto =
+                viewModel.carDetailModelLiveData.value?.photos?.get(0)?.replace("{0}", "800x600")
+            Glide.with(imageViewDetails.context)
+                .load(formattedPhoto)
+                .placeholder(R.drawable.ic_no_photo)
+                .into(imageViewDetails)
         }
     }
 }

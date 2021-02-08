@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.bedirhandag.arabamcomandroidsample">
+
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <uses-feature android:name="android.hardware.type.watch" />
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -12,13 +15,20 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+
+        <!--
+               Set to true if your app is Standalone, that is, it does not require the handheld
+               app to run.
+        -->
 
         <activity
+            android:name=".ui.view.photodetail.PhotoDetailActivity"
+            android:label="@string/title_activity_photo_detail" />
+        <activity
             android:name=".ui.view.cardetail.CarDetailsActivity"
-            android:label="@string/title_activity_car_details">
-        </activity>
+            android:label="@string/title_activity_car_details" />
         <activity android:name=".ui.view.carlist.CarListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

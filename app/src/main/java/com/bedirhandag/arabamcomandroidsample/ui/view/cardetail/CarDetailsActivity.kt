@@ -1,21 +1,27 @@
 package com.bedirhandag.arabamcomandroidsample.ui.view.cardetail
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Html
 import android.util.Log
-import android.widget.Toast
+import androidx.core.text.HtmlCompat
+import androidx.core.text.htmlEncode
 import androidx.lifecycle.ViewModelProvider
 import com.bedirhandag.arabamcomandroidsample.R
 import com.bedirhandag.arabamcomandroidsample.api.ApiClient
 import com.bedirhandag.arabamcomandroidsample.api.ApiService
 import com.bedirhandag.arabamcomandroidsample.databinding.ActivityCarDetailsBinding
 import com.bedirhandag.arabamcomandroidsample.model.cardetail.CarDetailResponseModel
+import com.bedirhandag.arabamcomandroidsample.ui.view.photodetail.PhotoDetailActivity
 import com.bedirhandag.arabamcomandroidsample.util.Constant.KEY_COLOR
 import com.bedirhandag.arabamcomandroidsample.util.Constant.KEY_DEFAULT_PHOTO_SIZE
+import com.bedirhandag.arabamcomandroidsample.util.Constant.KEY_FUEL
 import com.bedirhandag.arabamcomandroidsample.util.Constant.KEY_GEAR
 import com.bedirhandag.arabamcomandroidsample.util.Constant.KEY_ID
+import com.bedirhandag.arabamcomandroidsample.util.Constant.KEY_KM
+import com.bedirhandag.arabamcomandroidsample.util.Constant.KEY_PHOTO
 import com.bedirhandag.arabamcomandroidsample.util.loadImage
-import com.bumptech.glide.Glide
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -23,13 +29,14 @@ import retrofit2.Response
 class CarDetailsActivity : AppCompatActivity() {
     private lateinit var viewbinding: ActivityCarDetailsBinding
     private lateinit var viewModel: CarDetailsViewModel
-    lateinit var apiService: ApiService
+    private lateinit var apiService: ApiService
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setupViewBinding()
         setupViewModel()
         initObservers()
+        initListener()
         getArgs()
     }
 
@@ -86,22 +93,58 @@ class CarDetailsActivity : AppCompatActivity() {
                 modelName.text = _data.modelName
                 formattedPrice.text = _data.priceFormatted
                 year.text = _data.dateFormatted
-                location.text = _data.location?.cityName
+                _data.text?.let { _desc ->
+                    description.text = HtmlCompat.fromHtml(_desc, HtmlCompat.FROM_HTML_MODE_LEGACY)
+                }
+                location.text = getString(
+                    R.string.placeholder_city_name,
+                    _data.location?.cityName,
+                    _data.location?.townName
+                )
                 userInfo.text = _data.userInfo?.nameSurname
                 _data.properties?.find { it.name == KEY_COLOR }?.let {
-                    if(!it.value.isNullOrEmpty()) {
-                        color.text = it.value
-                    }
+                    color.text =
+                        if (!it.value.isNullOrEmpty()) it.value
+                        else "-"
                 }
+                _data.properties?.find { it.name == KEY_FUEL }?.let {
+                    fuel.text =
+                        if (!it.value.isNullOrEmpty()) it.value
+                        else "-"
+                }
+
                 _data.properties?.find { it.name == KEY_GEAR }?.let {
-                    if(!it.value.isNullOrEmpty()) {
-                        gear.text = it.value
-                    }
+                    gear.text =
+                        if (!it.value.isNullOrEmpty()) it.value
+                        else "-"
                 }
-                _data.photos?.get(0)?.replace("{0}", KEY_DEFAULT_PHOTO_SIZE)?.let {  _photoUrl ->
+                _data.properties?.find { it.name == KEY_KM }?.let {
+                    km.text =
+                        if (!it.value.isNullOrEmpty()) it.value
+                        else "-"
+                }
+                _data.photos?.get(0)?.replace("{0}", KEY_DEFAULT_PHOTO_SIZE)?.let { _photoUrl ->
                     imageViewDetails.loadImage(_photoUrl)
                 }
             }
+        }
+    }
+
+    private fun navigateToPhotoDetailPage() {
+        viewModel.carDetailModelLiveData.value?.photos?.get(0)
+            ?.replace("{0}", KEY_DEFAULT_PHOTO_SIZE)?.let { _photoUrl ->
+                Intent(this, PhotoDetailActivity::class.java).apply {
+                    putExtra(KEY_PHOTO, _photoUrl)
+                }.also { _intent ->
+                    startActivity(_intent)
+                }
+            }
+
+    }
+
+    private fun initListener() {
+        viewbinding.imageViewDetails.setOnClickListener {
+            navigateToPhotoDetailPage()
         }
     }
 }

@@ -12,6 +12,7 @@
     <string name="placeholder_brand">Marka: %s</string>
     <string name="placeholder_model">Model: %s</string>
     <string name="placeholder_year">Yıl: %s</string>
+    <string name="placeholder_city_name">%s / %s</string>
 
     <string name="placeholder_price">Fiyat :</string>
     <string name="placeholder_km">KM :</string>
@@ -19,4 +20,7 @@
     <string name="placeholder_date">İlan Tarihi :</string>
     <string name="placeholder_color">Renk :</string>
     <string name="placeholder_gear">Vites :</string>
+    <string name="placeholder_fuel">Yakıt :</string>
+    <string name="placeholder_description">Açıklama :</string>
+    <string name="title_activity_photo_detail">PhotoDetailActivity</string>
 </resources>

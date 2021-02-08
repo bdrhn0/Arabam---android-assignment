@@ -10,6 +10,11 @@ import com.bedirhandag.arabamcomandroidsample.api.ApiClient
 import com.bedirhandag.arabamcomandroidsample.api.ApiService
 import com.bedirhandag.arabamcomandroidsample.databinding.ActivityCarDetailsBinding
 import com.bedirhandag.arabamcomandroidsample.model.cardetail.CarDetailResponseModel
+import com.bedirhandag.arabamcomandroidsample.util.Constant.KEY_COLOR
+import com.bedirhandag.arabamcomandroidsample.util.Constant.KEY_DEFAULT_PHOTO_SIZE
+import com.bedirhandag.arabamcomandroidsample.util.Constant.KEY_GEAR
+import com.bedirhandag.arabamcomandroidsample.util.Constant.KEY_ID
+import com.bedirhandag.arabamcomandroidsample.util.loadImage
 import com.bumptech.glide.Glide
 import retrofit2.Call
 import retrofit2.Callback
@@ -29,7 +34,7 @@ class CarDetailsActivity : AppCompatActivity() {
     }
 
     private fun getArgs() {
-        intent?.getIntExtra("id", 0)?.let {
+        intent?.getIntExtra(KEY_ID, 0)?.let {
             viewModel.carIdLiveData.value = it
         }
     }
@@ -43,7 +48,7 @@ class CarDetailsActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this).get(CarDetailsViewModel::class.java)
     }
 
-    fun carDetailsRequest(id: Int) {
+    private fun carDetailsRequest(id: Int) {
         apiService = ApiClient.getClient().create(ApiService::class.java)
         val carDetailRequest = apiService.getDetails(id)
 
@@ -58,7 +63,7 @@ class CarDetailsActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<CarDetailResponseModel>, t: Throwable) {
-                Log.e("bedirhan", t.message.toString(), t)
+                Log.e(this@CarDetailsActivity.javaClass.simpleName, t.message.toString(), t)
             }
 
         })
@@ -77,17 +82,26 @@ class CarDetailsActivity : AppCompatActivity() {
 
     private fun initUi() {
         viewbinding.apply {
-            modelName.text = viewModel.carDetailModelLiveData.value?.modelName
-            formattedPrice.text = viewModel.carDetailModelLiveData.value?.priceFormatted
-            year.text = viewModel.carDetailModelLiveData.value?.dateFormatted
-            location.text = viewModel.carDetailModelLiveData.value?.location?.cityName
-            userInfo.text = viewModel.carDetailModelLiveData.value?.userInfo?.nameSurname
-            val formattedPhoto =
-                viewModel.carDetailModelLiveData.value?.photos?.get(0)?.replace("{0}", "800x600")
-            Glide.with(imageViewDetails.context)
-                .load(formattedPhoto)
-                .placeholder(R.drawable.ic_no_photo)
-                .into(imageViewDetails)
+            viewModel.carDetailModelLiveData.value?.let { _data ->
+                modelName.text = _data.modelName
+                formattedPrice.text = _data.priceFormatted
+                year.text = _data.dateFormatted
+                location.text = _data.location?.cityName
+                userInfo.text = _data.userInfo?.nameSurname
+                _data.properties?.find { it.name == KEY_COLOR }?.let {
+                    if(!it.value.isNullOrEmpty()) {
+                        color.text = it.value
+                    }
+                }
+                _data.properties?.find { it.name == KEY_GEAR }?.let {
+                    if(!it.value.isNullOrEmpty()) {
+                        gear.text = it.value
+                    }
+                }
+                _data.photos?.get(0)?.replace("{0}", KEY_DEFAULT_PHOTO_SIZE)?.let {  _photoUrl ->
+                    imageViewDetails.loadImage(_photoUrl)
+                }
+            }
         }
     }
 }

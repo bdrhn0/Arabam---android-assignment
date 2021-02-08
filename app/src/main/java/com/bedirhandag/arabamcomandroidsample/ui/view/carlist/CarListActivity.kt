@@ -12,6 +12,7 @@ import com.bedirhandag.arabamcomandroidsample.databinding.ActivityCarListBinding
 import com.bedirhandag.arabamcomandroidsample.model.carlist.CarListResponseModel
 import com.bedirhandag.arabamcomandroidsample.ui.adapter.CarListAdapter
 import com.bedirhandag.arabamcomandroidsample.ui.view.cardetail.CarDetailsActivity
+import com.bedirhandag.arabamcomandroidsample.util.Constant.KEY_ID
 import com.bedirhandag.arabamcomandroidsample.util.EndlessScrollListener
 import com.bedirhandag.arabamcomandroidsample.util.ItemClickListener
 import retrofit2.Call
@@ -76,7 +77,7 @@ class CarListActivity : AppCompatActivity() {
 
     private fun navigateToCarDetails(id: Int) {
         Intent(this@CarListActivity, CarDetailsActivity::class.java).apply {
-            putExtra("id", id)
+            putExtra(KEY_ID, id)
         }.also {
             startActivity(it)
         }
@@ -97,7 +98,7 @@ class CarListActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<CarListResponseModel>, t: Throwable) {
-                Log.e("bedirhan", t.message.toString(), t)
+                Log.e(this@CarListActivity.javaClass.simpleName, t.message.toString(), t)
             }
 
         })

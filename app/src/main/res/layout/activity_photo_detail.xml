@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/md_grey_200"
+    android:orientation="vertical"
+    android:background="@color/md_black_1000"
     tools:context=".ui.view.photodetail.PhotoDetailActivity">
 
+    <include
+        android:id="@+id/photoDetailAppbar"
+        layout="@layout/photo_detail_appbar"/>
     <ImageView
         android:id="@+id/photo"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/ic_no_photo" />
+        android:src="@drawable/ic_no_photo"
+        tools:ignore="ContentDescription" />
 
-</FrameLayout>
+</LinearLayout>

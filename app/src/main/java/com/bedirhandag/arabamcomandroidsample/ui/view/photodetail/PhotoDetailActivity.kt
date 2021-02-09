@@ -15,8 +15,15 @@ class PhotoDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setupViewBinding()
         setupViewModel()
+        initListeners()
         initObservers()
         getArgs()
+    }
+
+    private fun initListeners() {
+        viewbinding.apply {
+            photoDetailAppbar.btnClose.setOnClickListener { onBackPressed() }
+        }
     }
 
     private fun setupViewBinding() {

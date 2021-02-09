@@ -4,11 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/pale_grey"
     android:orientation="vertical"
     android:paddingStart="6dp"
     android:paddingTop="6dp"
-    android:paddingEnd="6dp">
+    tools:ignore="RtlSymmetry">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
@@ -19,14 +18,16 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:padding="15dp">
 
             <ImageView
                 android:id="@+id/photo"
-                android:layout_width="100dp"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
                 android:layout_marginEnd="15dp"
-                android:src="@drawable/ic_no_photo" />
+                android:src="@drawable/ic_no_photo"
+                tools:ignore="ContentDescription" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -40,7 +41,7 @@
                     android:layout_margin="5dp"
                     android:maxLines="1"
                     android:textColor="@color/md_black_1000"
-                    android:textSize="15sp"
+                    android:textSize="17sp"
                     tools:text="Marka:" />
 
                 <TextView
@@ -49,7 +50,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:maxLines="1"
-                    android:textColor="@color/md_black_1000"
+                    android:textColor="@color/md_grey_900"
                     android:textSize="15sp"
                     tools:text="Model:" />
 

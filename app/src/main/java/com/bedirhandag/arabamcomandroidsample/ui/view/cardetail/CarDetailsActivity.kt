@@ -1,6 +1,7 @@
 package com.bedirhandag.arabamcomandroidsample.ui.view.cardetail
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Html
@@ -22,6 +23,7 @@ import com.bedirhandag.arabamcomandroidsample.util.Constant.KEY_ID
 import com.bedirhandag.arabamcomandroidsample.util.Constant.KEY_KM
 import com.bedirhandag.arabamcomandroidsample.util.Constant.KEY_PHOTO
 import com.bedirhandag.arabamcomandroidsample.util.loadImage
+import com.bedirhandag.arabamcomandroidsample.util.showAlert
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -90,7 +92,8 @@ class CarDetailsActivity : AppCompatActivity() {
     private fun initUi() {
         viewbinding.apply {
             viewModel.carDetailModelLiveData.value?.let { _data ->
-                modelName.text = _data.modelName
+                title.text = _data.title
+                detailAppbar.appbarTitle.text = _data.modelName
                 formattedPrice.text = _data.priceFormatted
                 year.text = _data.dateFormatted
                 _data.text?.let { _desc ->
@@ -143,8 +146,28 @@ class CarDetailsActivity : AppCompatActivity() {
     }
 
     private fun initListener() {
-        viewbinding.imageViewDetails.setOnClickListener {
-            navigateToPhotoDetailPage()
+        viewbinding.apply {
+            imageViewDetails.setOnClickListener {
+                navigateToPhotoDetailPage()
+            }
+            userInfo.setOnClickListener { dialOperation() }
+            detailAppbar.btnBack.setOnClickListener { onBackPressed() }
+        }
+    }
+
+    private fun dialOperation() {
+        showAlert(
+            getString(R.string.dial_title),
+            getString(R.string.dial_message),
+            R.drawable.ic_call
+        ) {
+            viewModel.carDetailModelLiveData.value?.let { _data ->
+                Intent(Intent.ACTION_DIAL).apply {
+                    data = Uri.parse(getString(R.string.text_dial, _data.userInfo?.phone))
+                }.also { _intent ->
+                    startActivity(_intent)
+                }
+            }
         }
     }
 }

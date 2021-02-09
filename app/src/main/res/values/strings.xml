@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Arabamcom Android Sample</string>
+    <string name="app_name">Arabalan</string>
     <string name="title_activity_cars">CarsActivity</string>
     <!--
     This string is used for square devices and overridden by hello_world in
@@ -23,4 +23,12 @@
     <string name="placeholder_fuel">Yakıt :</string>
     <string name="placeholder_description">Açıklama :</string>
     <string name="title_activity_photo_detail">PhotoDetailActivity</string>
+
+    <string name="placeholder_ok">Tamam</string>
+    <string name="placeholder_cancel">İptal</string>
+
+    <string name="dial_title">Telefon Et</string>
+    <string name="dial_message">İlan sahibine telefon çağrısı başlatmak istediğinize emin misiniz?</string>
+
+    <string name="text_dial">tel:%s</string>
 </resources>

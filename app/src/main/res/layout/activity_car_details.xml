@@ -10,297 +10,307 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/md_white_1000"
-        android:orientation="vertical"
-        tools:context=".ui.view.cardetail.CarDetailsActivity">
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/modelName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textColor="@color/md_grey_900"
-            android:textStyle="bold"
-            tools:text="Title" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/md_grey_400" />
-
-        <ImageView
-            android:id="@+id/imageViewDetails"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            tools:ignore="ContentDescription"
-            tools:src="@drawable/ic_no_photo" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/md_grey_400" />
-
-
-        <TextView
-            android:id="@+id/userInfo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="8dp"
-            android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textColor="@color/md_grey_700"
-            android:textStyle="bold"
-            tools:text="Bedirhan Dag" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/md_grey_400" />
-
+        <include
+            android:id="@+id/detailAppbar"
+            layout="@layout/detail_appbar" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:orientation="horizontal">
+            android:background="@color/md_white_1000"
+            android:orientation="vertical"
+            tools:context=".ui.view.cardetail.CarDetailsActivity">
 
             <TextView
-                android:layout_width="0dp"
+                android:id="@+id/title"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@color/md_black_1000"
-                android:text="@string/placeholder_price"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-
-            <TextView
-                android:id="@+id/formattedPrice"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
+                android:padding="10dp"
+                android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                tools:text="250.000TL" />
-        </LinearLayout>
+                android:textColor="@color/md_grey_900"
+                android:textStyle="bold"
+                tools:text="Title" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/md_grey_400" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/md_grey_400" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/imageViewDetails"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                tools:ignore="ContentDescription"
+                tools:src="@drawable/ic_no_photo" />
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@color/md_black_1000"
-                android:text="@string/placeholder_km"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/md_grey_400" />
+
 
             <TextView
-                android:id="@+id/km"
-                android:layout_width="0dp"
+                android:id="@+id/userInfo"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
+                android:padding="8dp"
+                android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                tools:text="3.206" />
-        </LinearLayout>
+                android:textColor="@color/md_grey_700"
+                android:textStyle="bold"
+                tools:text="Bedirhan Dag" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/md_grey_400" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/md_grey_400" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/placeholder_price"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textColor="@color/md_black_1000" />
+
+                <TextView
+                    android:id="@+id/formattedPrice"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    tools:text="250.000TL" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/md_grey_400" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/placeholder_km"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textColor="@color/md_black_1000" />
+
+                <TextView
+                    android:id="@+id/km"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    tools:text="3.206" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/md_grey_400" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/placeholder_city"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textColor="@color/md_black_1000" />
+
+                <TextView
+                    android:id="@+id/location"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    tools:text="İstanbul" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/md_grey_400" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/placeholder_date"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textColor="@color/md_black_1000" />
+
+                <TextView
+                    android:id="@+id/year"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    tools:text="2020" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/md_grey_400" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/placeholder_color"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textColor="@color/md_black_1000" />
+
+                <TextView
+                    android:id="@+id/color"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    tools:text="Beyaz" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/md_grey_400" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/placeholder_gear"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textColor="@color/md_black_1000" />
+
+                <TextView
+                    android:id="@+id/gear"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    tools:text="Otomatik" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/md_grey_400" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/placeholder_fuel"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textColor="@color/md_black_1000" />
+
+                <TextView
+                    android:id="@+id/fuel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    tools:text="Benzin" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/md_grey_400" />
 
             <TextView
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@color/md_black_1000"
-                android:text="@string/placeholder_city"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-
-            <TextView
-                android:id="@+id/location"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="5dp"
+                android:text="@string/placeholder_description"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                tools:text="İstanbul" />
-        </LinearLayout>
+                android:textColor="@color/md_black_1000" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/md_grey_400" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:orientation="horizontal">
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/md_grey_400" />
 
             <TextView
-                android:layout_width="0dp"
+                android:id="@+id/description"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@color/md_black_1000"
-                android:text="@string/placeholder_date"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="5dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-
-            <TextView
-                android:id="@+id/year"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                tools:text="2020" />
         </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/md_grey_400" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@color/md_black_1000"
-                android:text="@string/placeholder_color"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-
-            <TextView
-                android:id="@+id/color"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                tools:text="Beyaz" />
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/md_grey_400" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@color/md_black_1000"
-                android:text="@string/placeholder_gear"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-
-            <TextView
-                android:id="@+id/gear"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                tools:text="Otomatik" />
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/md_grey_400" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@color/md_black_1000"
-                android:text="@string/placeholder_fuel"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-
-            <TextView
-                android:id="@+id/fuel"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                tools:text="Benzin" />
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/md_grey_400" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:textColor="@color/md_black_1000"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:text="@string/placeholder_description" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/md_grey_400" />
-
-        <TextView
-            android:id="@+id/description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
     </LinearLayout>
 </ScrollView>
